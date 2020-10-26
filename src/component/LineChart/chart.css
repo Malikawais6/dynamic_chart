@@ -1,0 +1,16 @@
+.input-fields div {
+  /* width: 50%; */
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  justify-items: center;
+  grid-gap: 0;
+  padding: 15px;
+}
+div span {
+  justify-self: right;
+}
+div input {
+  justify-self: self-start;
+  margin-left: 10px;
+  width: 90%;
+}
