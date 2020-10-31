@@ -31,16 +31,18 @@ const options = {
     showLastLabel: true,
   },
   yAxis: {
+    min: 0,
+    max: 100,
     title: {
-      text: "Temperature",
+      // text: "Temperature",
       enabled: false,
     },
     labels: {
-      format: "{value} k",
+      format: "{value} %",
     },
-    accessibility: {
-      rangeDescription: "Range: -90°C to 20°C.",
-    },
+    // accessibility: {
+    //   rangeDescription: ".",
+    // },
     lineWidth: 2,
   },
   legend: {
@@ -48,7 +50,7 @@ const options = {
   },
   tooltip: {
     headerFormat: "<b>{series.name}</b><br/>",
-    pointFormat: "{point.x}: {point.y}k",
+    pointFormat: "{point.x}: {point.y}%",
   },
   plotOptions: {
     spline: {
@@ -80,14 +82,16 @@ const options = {
 
 const LineChart = () => {
   const [data, setData] = useState({ data0: [], data1: [] });
-
+  const totalUsers = 20;
   const handleInputChange = (event, index) => {
     const name = Number(event.target.name);
     const value = event.target.value === "" ? 0 : Number(event.target.value);
-
     setData((st) => ({
       ...st,
-      [`data${index}`]: [...data[`data${index}`], [name * 3, value]],
+      [`data${index}`]: [
+        ...data[`data${index}`],
+        [name * 3, (value * 100) / totalUsers],
+      ],
     }));
   };
 
